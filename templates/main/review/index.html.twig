@@ -1,0 +1,33 @@
+{% extends 'main/base.html.twig'%}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h1 class="display-4 text-center mt-5">
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h2>Отзывы на товар
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('review_create', {'id': product.id}) }}" class="btn btn-success">Написать отзыв</a>
+                {% endif %}
+                </h2>
+                <ul>
+                    {% for review_item in review %}
+                        {% if product.id == review_item.product.id %}
+                            <li>
+                                <h4><a href="{{ path('review', {'id': review_item.id}) }}" class="btn-link">{{ review_item.title }}</a></h4><br>
+                                <h5>{{ review_item.content }}</h5>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

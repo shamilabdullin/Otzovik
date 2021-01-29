@@ -1,0 +1,92 @@
+{% extends 'main/base.html.twig'%}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h1 class="display-4 text-center mt-5">
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+    {#
+    <div class="container">
+        <div class="row no-gutters justify-content-center mt-3">
+            <div class="col-8">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12">
+                {% if check_category is empty %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <p>
+                            Создание постов невозможно, снчала создай категорию.
+                        </p>
+                        <hr>
+                        <a href="{{ path('admin_category_create') }}">Создать категорию</a>
+                    </div>
+                {% else %}
+                    <h2>Список постов</h2>
+                    <ul>
+                        {% for post_item in post %}
+                            <li>
+                                <img src="{{ asset('uploads/post/') }}{{ post_item.image }}"
+                                     style="width: 100px"
+                                     alt="">
+                                {{ post_item.title }}
+                                <a href="{{ path('admin_post_update', {'id': post_item.id}) }}"
+                                   class="btn-link">
+                                    Редактировать
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    #}
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h2>Список товаров</h2>
+                <ul>
+                    {#  for product_item in product %}
+                        {% if category.id == product_item.category.id%}
+                            <li>
+                                <img src="{{ asset('uploads/product/') }}{{ product_item.image }}"
+                                     style="width: 100px"
+                                     alt="">
+                                     {#  product_item.
+                                <a href="{{ path('all_review', {'id': product_item.id}) }}" class="btn-link">{{ product_item.name }}
+                            </li>
+                        {% endif %}
+                    {% endfor #}
+                    {% for product_item in product %}
+                        {% if category.id == product_item.category.id%}
+                            <li><h5>
+                                <img src="{{ asset('uploads/product/') }}{{ product_item.image }}"
+                                     style="width: 100px"
+                                     alt="">
+                                <a href="{{ path('all_review', {'id': product_item.id}) }}" class="btn-link">{{ product_item.name }}</a></h5>
+                            </li>
+                            <p></p>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

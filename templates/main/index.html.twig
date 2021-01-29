@@ -1,0 +1,35 @@
+{% extends 'main/base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center mt-5" >
+            <div class="col-12 col-lg-6 col-md-6">
+                <h1 class="display-4 text-center" >
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row no-gutters">
+            <div id="app">
+                <h2>Отзывы обо всем на свете!</h2>
+                <h5 class="display-5">
+                    Отзовик – самое полезное сообщество! Мы обмениваемся полезной информацией, помогаем друг другу, узнаем много нового и интересного, а также просто общаемся, находим новых друзей и единомышленников. Десятки тысяч авторов пишут здесь свои впечатления обо всем на свете, ставят оценки, дают полезные советы и идеи как выгодно и с пользой потратить свое время и деньги, а также предупреждают о возможных недостатках и проблемах, с которыми Вы можете столкнуться при покупке или поездке. Как совместить приятное с полезным? Зарегистрироваться и обмениваться своими впечатлениями.
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% block addJs%}
+        <script>
+            Vue.options.delimiters = ['[[',']]'];
+            let app = new Vue({
+                el:'#app',
+                data:{
+                    message: 'Hello world!'
+                },
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

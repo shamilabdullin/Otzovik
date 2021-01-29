@@ -1,0 +1,45 @@
+{% extends 'admin/adminbase.html.twig'%}
+{% block body %}
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h1 class="display-4 text-center mt-5">
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12">
+                    {# if check_category is empty #}
+                        {# <p>
+                            Создание товара невозможно, снчала создай категорию.
+                        </p>
+                        <hr> #}
+                      {# else #}
+                    <h2>Отзывы на товар</h2>
+                    {#  if is_granted('') #}
+                    <a href="{{ path('admin_review_create') }}" class="btn btn-success">Создать отзыв</a>
+                    <ul>
+                        {% for review_item in review %}
+                            <li>
+                                {# <li>
+                                    <a href="{{ path('product', {'id': product_item.id}) }}" class="btn-link">{{ product_item.name }}
+                                </li>#}
+                                {{ review_item.title }}
+                                <h5>
+                                    <a href="{{ path('admin_review_update', {'id': review_item.id}) }}"
+                                       class="btn-link">
+                                        Редактировать
+                                    </a>
+                                </h5>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    {#  endif #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
